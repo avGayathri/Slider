@@ -1,4 +1,4 @@
-import { subscribe } from './eventbus.js';
+import { eventBus } from './eventbus.js';
 
  export class MyValue extends HTMLElement {
   constructor() {
@@ -12,7 +12,7 @@ import { subscribe } from './eventbus.js';
     this.shadowRoot.appendChild(valueDisplay);
 
    
-    subscribe('valueChanged', (value) => {
+    eventBus.subscribe('valueChanged', (value) => {
       
       valueDisplay.textContent = `Value: ${value}`;
     });

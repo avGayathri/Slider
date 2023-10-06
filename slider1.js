@@ -1,4 +1,4 @@
-import { publish } from './eventbus.js';
+import { eventBus } from './eventbus.js';
  export class MySlider extends HTMLElement{
     
     constructor(){
@@ -15,7 +15,8 @@ import { publish } from './eventbus.js';
   this.shadowRoot.appendChild(myslider);
   this.sliderElement=this.shadowRoot.getElementById('slider');
   this.sliderElement.addEventListener('input', () => {
-  publish('valueChanged',this.sliderElement.value);
+  eventBus.publish('valueChanged',this.sliderElement.value);
 });
     }
 }
+customElements.define('my-slider', MySlider);
